@@ -1,14 +1,21 @@
-const { values, set } = require("lodash");
-const { useState, useEffect } = require("react");
-const { ScrollView } = require("react-native-gesture-handler");
-const { SafeAreaView } = require("react-native-safe-area-context");
+import _ from "lodash";
+import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Text } from "react-native-paper";
 
 const ScreenUserLogin = () => {
+  // TODO: tambahkan context
+  // const [, setIsAuthenticated] = useContext(ContextUserAuthentication)
   const [user, setUser] = useState({});
   const [complete, setComplete] = useState(false);
 
-  const handleChange = () => {
+  const handleChange = (name, value) => {
     setUser((values) => ({ ...values, [name]: value }));
+  };
+
+  const useLogin = () => {
+    //TODO: add services
   };
 
   useEffect(() => {
@@ -32,3 +39,5 @@ const ScreenUserLogin = () => {
     </SafeAreaView>
   );
 };
+
+export default ScreenUserLogin;
