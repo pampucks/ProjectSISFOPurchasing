@@ -10,6 +10,7 @@ import { ContextUserAuthentication } from "../../context/ContextUser";
 import { Text } from "react-native";
 import { useContext } from "react";
 import { RouterBarangAuthenticated } from "../../routers/RouterBarang";
+import { RouterPemasokAuthenticated } from "../../routers/RouterPemasok";
 
 const Drawer = createDrawerNavigator();
 
@@ -56,6 +57,13 @@ export default function WidgetBaseDrawer() {
                 }}
                 name="RouterBarang"
                 component={RouterBarangAuthenticated}
+              />
+              <Drawer.Screen
+                options={{
+                  drawerLabel: "Pemasok",
+                }}
+                name="RouterPemasok"
+                component={RouterPemasokAuthenticated}
               />
               <Drawer.Screen
                 options={{
