@@ -80,15 +80,20 @@ const ScreenPemasokList = ({ navigation }) => {
           <DataTable.Header>
             <DataTable.Title>Kode Pemasok</DataTable.Title>
             <DataTable.Title>Nama Pemasok</DataTable.Title>
-            <DataTable.Title>Telepon Pemasok</DataTable.Title>
+            {/* <DataTable.Title>Telepon Pemasok</DataTable.Title> */}
+            <DataTable.Title>Alamat Pemasok</DataTable.Title>
           </DataTable.Header>
 
           {complete &&
             daftarPemasok.map((pemasok, index) => (
-              <DataTable.Row key={index}>
+              <DataTable.Row
+                key={index}
+                onPress={() => openPemasokEdit(pemasok)}
+              >
                 <DataTable.Cell>{pemasok.kodePemasok}</DataTable.Cell>
                 <DataTable.Cell>{pemasok.namaPemasok}</DataTable.Cell>
-                <DataTable.Cell>{pemasok.teleponPemasok}</DataTable.Cell>
+                {/* <DataTable.Cell>{pemasok.teleponPemasok}</DataTable.Cell> */}
+                <DataTable.Cell>{pemasok.alamatPemasok}</DataTable.Cell>
               </DataTable.Row>
             ))}
         </DataTable>
