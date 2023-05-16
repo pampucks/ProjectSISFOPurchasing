@@ -10,9 +10,10 @@ const ScreenUserSetting = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Appbar.Header>
-        <Appbar.BackAction
+        <Appbar.Action
+          icon="menu"
           onPress={() => {
-            navigation.goBack();
+            navigation.toggleDrawer();
           }}
         />
         <Appbar.Content title="Settings" />

@@ -1,7 +1,8 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, StatusBar } from "react-native";
-import { Appbar, DataTable } from "react-native-paper";
+import { SafeAreaView, StatusBar } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Appbar, DataTable, Searchbar } from "react-native-paper";
 import { ServiceBarangList } from "../../services/ServiceBarang";
 import WidgetBaseLoader from "../../widgets/base/WidgetBaseLoader";
 import WidgetBaseFABCreate from "../../widgets/base/WidgetBaseFABCreate";
@@ -45,6 +46,14 @@ const ScreenBarangList = ({ navigation }) => {
     barangList(1, "");
   };
 
+  const paginate = (page) => {
+    barangList(page, query);
+  };
+
+  const search = (e) => {
+    barangList(1, e.nativeEvent.text);
+  };
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -56,15 +65,33 @@ const ScreenBarangList = ({ navigation }) => {
               navigation.toggleDrawer();
             }}
           />
-          <Appbar.Content title="Daftar Barang" />
+          <Appbar.Content title="Barang" />
           <Appbar.Action icon="refresh" onPress={refresh} />
+          <Appbar.Action
+            icon="arrow-left"
+            disabled={_.isNull(pagination?.prev)}
+            onPress={() => paginate(pagination?.prev)}
+          />
+          <Appbar.Action
+            icon="arrow-right"
+            disabled={_.isNull(pagination?.next)}
+            onPress={() => paginate(pagination?.next)}
+          />
         </Appbar.Header>
         <ScrollView style={{ paddingBottom: 30 }}>
+          <Searchbar
+            placeholder="Search"
+            value={query || ""}
+            onChangeText={(text) => setQuery(text)}
+            onSubmitEditing={search}
+            style={{ marginTop: 16, marginHorizontal: 16 }}
+          />
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Kode Barang</DataTable.Title>
               <DataTable.Title>Nama Barang</DataTable.Title>
               <DataTable.Title numeric>Harga Beli</DataTable.Title>
+              <DataTable.Title numeric>Harga Jual</DataTable.Title>
               <DataTable.Title numeric>Jumlah Barang</DataTable.Title>
             </DataTable.Header>
             {complete &&
@@ -76,6 +103,7 @@ const ScreenBarangList = ({ navigation }) => {
                   <DataTable.Cell>{barang.kodeBarang}</DataTable.Cell>
                   <DataTable.Cell>{barang.namaBarang}</DataTable.Cell>
                   <DataTable.Cell numeric>{barang.hargaBeli}</DataTable.Cell>
+                  <DataTable.Cell numeric>{barang.hargaJual}</DataTable.Cell>
                   <DataTable.Cell numeric>{barang.jumlahBarang}</DataTable.Cell>
                 </DataTable.Row>
               ))}

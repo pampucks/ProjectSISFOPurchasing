@@ -37,13 +37,13 @@ const ScreenPemasokList = ({ navigation }) => {
     pemasokList(1, "");
   };
 
-  //   const openPemasokEdit = _.debounce((pemasok) => {
-  //     navigation.navigate("ScreenPemasokEdit", { pemasok });
-  //   }, 100);
+  const openPemasokEdit = _.debounce((pemasok) => {
+    navigation.navigate("ScreenPemasokEdit", { pemasok });
+  }, 100);
 
-  //   const openPemasokCreate = _.debounce(() => {
-  //     navigation.navigate("ScreenPemasokCreate");
-  //   }, 100);
+  const openPemasokCreate = _.debounce(() => {
+    navigation.navigate("ScreenPemasokCreate");
+  }, 100);
 
   useEffect(() => {
     pemasokList();
@@ -94,7 +94,7 @@ const ScreenPemasokList = ({ navigation }) => {
         </DataTable>
       </ScrollView>
 
-      {/* <WidgetBaseFABCreate action={() => openPemasokCreate()} /> */}
+      <WidgetBaseFABCreate action={() => openPemasokCreate()} />
       <WidgetBaseLoader complete={complete} />
     </SafeAreaView>
   );
