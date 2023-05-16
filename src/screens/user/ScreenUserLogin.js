@@ -2,7 +2,7 @@ import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { Alert, SafeAreaView } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Button, TextInput } from "react-native-paper";
+import { Button, TextInput, Text } from "react-native-paper";
 import WidgetBaseLogo from "../../widgets/base/WidgetBaseLogo";
 import { ServiceUserLogin } from "../../services/ServiceUser";
 import AsyncStorage from "@react-native-async-storage/async-storage";

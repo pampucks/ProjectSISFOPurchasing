@@ -13,14 +13,14 @@ import { RouterBarangAuthenticated } from "../../routers/RouterBarang";
 
 const Drawer = createDrawerNavigator();
 
-const ScreenContoh = () => {
-  const [, setIsAuthenticated] = useContext(ContextUserAuthentication);
-  return (
-    <Text style={{ marginTop: 40 }} onPress={() => setIsAuthenticated(false)}>
-      Hello Ini sudah login
-    </Text>
-  );
-};
+// const ScreenContoh = () => {
+//   const [, setIsAuthenticated] = useContext(ContextUserAuthentication);
+//   return (
+//     <Text style={{ marginTop: 40 }} onPress={() => setIsAuthenticated(false)}>
+//       Hello Ini sudah login
+//     </Text>
+//   );
+// };
 
 export default function WidgetBaseDrawer() {
   const [isAuthenticated, setIsAuthenticated] =
