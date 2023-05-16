@@ -36,6 +36,10 @@ const ScreenBarangList = ({ navigation }) => {
     navigation.navigate("ScreenBarangCreate");
   }, 100);
 
+  const openBarangEdit = _.debounce((barang) => {
+    navigation.navigate("ScreenBarangEdit", { barang });
+  }, 100);
+
   const refresh = () => {
     setQuery("");
     barangList(1, "");
@@ -65,7 +69,10 @@ const ScreenBarangList = ({ navigation }) => {
             </DataTable.Header>
             {complete &&
               daftarBarang.map((barang, index) => (
-                <DataTable.Row key={index}>
+                <DataTable.Row
+                  key={index}
+                  onPress={() => openBarangEdit(barang)}
+                >
                   <DataTable.Cell>{barang.kodeBarang}</DataTable.Cell>
                   <DataTable.Cell>{barang.namaBarang}</DataTable.Cell>
                   <DataTable.Cell numeric>{barang.hargaBeli}</DataTable.Cell>
